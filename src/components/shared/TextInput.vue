@@ -1,30 +1,25 @@
 <template>
-  <div :class="{ [customClass]: true }">
+  <div :class="{ relative: true, [customClass]: true }">
     <div class="flex">
       <div class="mr-10">
-        <span
-          data-testid="input-label"
-          v-if="label"
-          class="mb-2 block text-xs text-dark-blue dark:text-dark-white"
-          >{{ label }}</span
-        >
+        <span v-if="label" class="block text-xs mb-[5px] uppercase text-black">{{ label }}</span>
         <input
           v-model="modelValue"
           :type="type"
           :placeholder="placeholder"
           :class="{
-            'focus:shadow-outline w-full appearance-none rounded-md border px-3 py-2 leading-tight focus:outline-none': true,
+            'focus:shadow-outline text-xs appearance-none rounded-sm border border-black h-[31px] w-[246px] px-3 py-2 leading-tight focus:outline-none': true,
             [inputClass]: true
           }"
         />
       </div>
     </div>
-    <span v-show="errorMessage" class="text-red-500">{{ errorMessage }}</span>
+    <span v-show="errorMessage" class="text-red-500 absolute">{{ errorMessage }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { toRefs, watchEffect } from 'vue'
+import { toRefs } from 'vue'
 
 export interface EditableTextInputProps {
   placeholder?: string

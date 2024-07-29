@@ -4,3 +4,7 @@ export type FieldConfig = {
   name: string
   type?: string
 }
+export type CheckboxField = {
+  label: string
+  value: string
+}
